@@ -1,0 +1,76 @@
+#include<stdio.h>
+
+#include<conio.h>
+
+char str[20][20];
+
+int i,n;
+
+void sender()
+
+{
+
+printf("\n********* SENDER ***********\n");
+
+printf("\n\t%s",str[i]);
+
+printf("\n\tdata %d sent",i);
+
+printf("\n\tWaiting for ACK %d\n",i);
+
+}
+
+void receiver()
+
+{
+
+ printf("\n********* RECEIVER ***********\n");
+
+ printf("\n\tdata %d received",i);
+
+ printf("\n\tPress any key to send ACK\n");
+
+ getch();
+
+ printf("\n\tACK %d sent\n",i);
+
+}
+
+void main()
+
+{
+
+clrscr();
+
+printf("\nStop and wait starts\nEnter the no. of data to send:");
+
+scanf("%d",&n);
+
+printf("\nEnter the data:\n");
+for(i=1;i<=n;i++)
+
+{
+
+ scanf("%s",str[i]);
+
+}
+
+ printf("\nStart sending data");
+
+for(i=1;i<=n;i++)
+
+{
+
+sender();
+
+receiver();
+
+}
+
+printf("\nAll data sent");
+
+getch();
+
+}
+
+
