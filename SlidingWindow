@@ -1,0 +1,127 @@
+#include<stdio.h> 
+
+#include<conio.h> 
+
+#include<stdlib.h> 
+
+void main() { 
+
+int temp1,temp2,temp3,temp4; 
+
+int winsize=8; 
+
+int noframes,moreframes,i; 
+
+int receiver(int); 
+
+int simulate(int); 
+
+temp1=0;
+
+temp2=0;
+
+temp3=0;
+
+temp4=0;
+
+clrscr();
+
+for(i=0;i<200;i++)
+
+rand();
+
+noframes=5;
+
+printf("\nNo. of frames is %d",noframes);
+
+getch();
+
+moreframes=noframes;
+
+while(moreframes>0)
+
+{
+
+temp1=simulate(winsize);
+
+winsize=temp1;
+
+temp4+=temp1;
+
+if(temp4>noframes)
+
+temp4=noframes;
+for(i=temp3+1;i<=temp4;i++)
+
+printf("\nSending frame %d",i);
+
+getch();
+
+temp2=receiver(temp1);
+
+temp3+=temp2;
+
+if(temp3>noframes)
+
+temp3=noframes;
+
+printf("\nAcknowledgement for the frames upto %d",temp3);
+
+getch();
+
+moreframes-=temp2;
+
+temp4+=temp3;
+
+if(winsize<=0)
+
+winsize=8;
+
+}
+
+printf("\nEnd of SLIDING WINDOW PROTOCOL");
+
+getch();
+
+}
+
+int receiver(int temp1) 
+
+{
+
+int i; 
+
+for(i=0;i<100;i++) 
+
+rand(); 
+
+i=rand()%temp1; 
+
+return 1; 
+
+} 
+
+int simulate(int winsize) 
+
+{ 
+
+int temp1,i; 
+for(i=0;i<50;i++) 
+
+temp1=rand(); 
+
+if(temp1==0) 
+
+temp1=simulate(winsize); 
+
+i=temp1%winsize; 
+
+if(i==0) 
+
+return winsize; 
+
+else return temp1%winsize; 
+
+} 
+
+
