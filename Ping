@@ -1,0 +1,64 @@
+import java.io.*;
+
+import java.net.*;
+
+class pingdemo
+
+{
+
+ public static void main(String args[])
+
+ {
+
+ BufferedReader in;
+
+ try
+
+ {
+
+ 
+
+Runtime r=Runtime.getRuntime();
+
+ 
+
+System.out.println("Enter the IP address");
+
+BufferedReader b=new BufferedReader(new InputStreamReader(System.in));
+
+ String data=b.readLine();
+
+ 
+
+Process p=r.exec("Ping "+data);
+
+ 
+
+in=new BufferedReader(new InputStreamReader(p.getInputStream()));
+
+ 
+
+String line;
+
+while((line=in.readLine())!=null)
+
+{
+
+System.out.println(line);
+
+}
+
+ System.out.println(in.readLine());
+
+ in.close();
+
+ } 
+
+ catch(IOException e)
+
+ {
+
+ System.out.println(e.toString());
+}
+}
+}
